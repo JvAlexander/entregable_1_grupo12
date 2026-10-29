@@ -1,0 +1,175 @@
+/* ----- Fondos de color según la sección ----- */
+body {
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+.tema-usuarios {
+    background-image: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+}
+
+.tema-mascotas {
+    background-image: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.tema-buscar {
+    background-image: linear-gradient(135deg, #d4fc79, #96e6a1);
+}
+
+/* ----- Encabezado ----- */
+.logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+    padding: 2px;
+}
+
+.nav-pills .nav-link {
+    color: white;
+    margin: 2px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #ffc107;
+    color: #222;
+}
+
+/* ----- Secciones ----- */
+#mascotas, #buscar, #modoImagenes {
+    display: none;
+}
+
+.hero {
+    border-radius: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-usuarios {
+    background-image: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.hero-mascotas {
+    background-image: linear-gradient(135deg, #ff5f6d, #ffc371);
+}
+
+.hero-buscar {
+    background-image: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+.hero-icono {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 6px;
+    object-fit: cover;
+}
+
+.form-usuarios {
+    border-top: 6px solid #6a11cb;
+}
+
+.form-mascotas {
+    border-top: 6px solid #ff5f6d;
+}
+
+/* ----- Mensajes (arriba de la pantalla) ----- */
+#mensaje {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 90%;
+    z-index: 1000;
+    font-weight: bold;
+}
+
+/* ----- Tarjetas ----- */
+.tarjeta {
+    overflow: hidden;
+    border: 0;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+.cabecera {
+    height: 70px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    background-color: white;
+    margin: -50px auto 0 auto;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.foto-grande {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.sin-foto {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sin-foto img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 6px;
+    object-fit: cover;
+}
+
+.mini {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 2px;
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.icono-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rosa {
+    background-color: #e83e8c;
+}
+
+/* ----- Colores de las tarjetas (cambian según el ID) ----- */
+.color1 { background-image: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+.color2 { background-image: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
+.color3 { background-image: linear-gradient(135deg, #4facfe, #00c6d7); color: white; }
+.color4 { background-image: linear-gradient(135deg, #43e97b, #1fbfa5); color: white; }
+.color5 { background-image: linear-gradient(135deg, #fa709a, #f9a825); color: white; }
+.color6 { background-image: linear-gradient(135deg, #30cfd0, #330867); color: white; }
+
+/* Si la persona prefiere menos movimiento, se quitan las animaciones */
+@media (prefers-reduced-motion: reduce) {
+    .animate__animated {
+        animation: none !important;
+    }
+}

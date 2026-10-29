@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Usuarios y Mascotas</title>
+    <link rel="icon" href="/img/pets/pets.png">
+
+    <!-- Plantilla de diseño: Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Plantilla de movimiento: Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema-usuarios">
+
+    <header class="py-3 mb-4 bg-dark text-white shadow">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/img/users/user.png" class="logo animate__animated animate__bounceIn" alt="Usuarios">
+                <img src="/img/pets/pets.png" class="logo animate__animated animate__bounceIn animate__delay-1s" alt="Mascotas">
+                <h1 class="h4 m-0 ms-2">Usuarios y Mascotas</h1>
+            </div>
+            <div class="nav nav-pills">
+                <button id="pill-usuarios" class="nav-link active" onclick="mostrar('usuarios')">Usuarios</button>
+                <button id="pill-mascotas" class="nav-link" onclick="mostrar('mascotas')">Mascotas</button>
+                <button id="pill-buscar" class="nav-link" onclick="mostrar('buscar')">Buscar por ID</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mensaje" class="d-none"></div>
+
+    <main class="container pb-5">
+
+        <!-- USUARIOS -->
+        <section id="usuarios" class="animate__animated animate__fadeIn">
+            <div class="hero hero-usuarios text-white p-4 mb-4 d-flex align-items-center gap-3">
+                <img src="/img/users/user.png" class="hero-icono animate__animated animate__pulse animate__infinite animate__slower" alt="Icono de usuario">
+                <div>
+                    <h2 class="m-0">Usuarios</h2>
+                    <p class="m-0"><span class="badge bg-light text-dark" id="contadorUsuarios">0</span> personas registradas</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <form id="formUsuario" class="card form-usuarios shadow p-3">
+                        <h3 class="h5" id="tituloUsuario">Nuevo usuario</h3>
+
+                        <label class="form-label mt-2">Nombre</label>
+                        <input class="form-control" type="text" name="firstname">
+
+                        <label class="form-label mt-2">Apellido</label>
+                        <input class="form-control" type="text" name="lastname">
+
+                        <label class="form-label mt-2">Usuario</label>
+                        <input class="form-control" type="text" name="username">
+
+                        <label class="form-label mt-2">Contraseña</label>
+                        <input class="form-control" type="password" name="password">
+
+                        <label class="form-label mt-2">Avatar</label>
+                        <input class="form-control" type="file" name="avatar">
+
+                        <div class="mt-3">
+                            <button class="btn btn-primary" type="submit" id="btnUsuario">Guardar usuario</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="cancelarUsuario()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row row-cols-1 row-cols-md-2 g-4" id="listaUsuarios"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MASCOTAS -->
+        <section id="mascotas" class="animate__animated animate__fadeIn">
+            <div class="hero hero-mascotas text-white p-4 mb-4 d-flex align-items-center gap-3">
+                <img src="/img/pets/pets.png" class="hero-icono animate__animated animate__pulse animate__infinite animate__slower" alt="Icono de mascota">
+                <div>
+                    <h2 class="m-0">Mascotas</h2>
+                    <p class="m-0"><span class="badge bg-light text-dark" id="contadorMascotas">0</span> mascotas registradas</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <form id="formMascota" class="card form-mascotas shadow p-3">
+                        <h3 class="h5" id="tituloMascota">Nueva mascota</h3>
+
+                        <label class="form-label mt-2">Especie</label>
+                        <input class="form-control" type="text" name="especie">
+
+                        <label class="form-label mt-2">Color</label>
+                        <input class="form-control" type="text" name="color">
+
+                        <label class="form-label mt-2">Edad</label>
+                        <input class="form-control" type="number" name="edad" min="0" step="any">
+
+                        <label class="form-label mt-2">Sexo</label>
+                        <select class="form-select" name="sexo">
+                            <option value="">-- Elige --</option>
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                        </select>
+
+                        <label class="form-label mt-2">Imágenes (máximo 5)</label>
+                        <input class="form-control" type="file" name="img" multiple>
+
+                        <div id="modoImagenes">
+                            <label class="form-label mt-2">Si subes imágenes nuevas</label>
+                            <select class="form-select" name="modoImg">
+                                <option value="agregar">Agregarlas a las que ya tiene</option>
+                                <option value="reemplazar">Reemplazar las que ya tiene</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-3">
+                            <button class="btn btn-danger" type="submit" id="btnMascota">Guardar mascota</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="cancelarMascota()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row row-cols-1 row-cols-md-2 g-4" id="listaMascotas"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUSCAR POR ID -->
+        <section id="buscar" class="animate__animated animate__fadeIn">
+            <div class="hero hero-buscar text-white p-4 mb-4">
+                <h2 class="m-0">Buscar por ID</h2>
+                <p class="m-0">Prueba GET /api/users/:id y GET /api/pets/:id</p>
+            </div>
+
+            <div class="card shadow p-3">
+                <div class="row g-2">
+                    <div class="col-sm-4">
+                        <select class="form-select" id="tipoBusqueda">
+                            <option value="users">Usuario</option>
+                            <option value="pets">Mascota</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        <input class="form-control" type="number" id="idBusqueda" placeholder="ID">
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-success w-100" onclick="buscarPorId()">Buscar</button>
+                    </div>
+                </div>
+                <pre id="resultado" class="mt-3 p-3 rounded bg-dark text-white"></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
